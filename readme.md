@@ -10,15 +10,15 @@ npm run snap
 
 ### Base
 
-`screenshots/base` - The source image should be located in
+`screenshots/base` - The source image should be located in.
 
 ### Actual
 
-`screenshots/actual` - If test is passed then it's removed
+`screenshots/actual` - Images generated during the tests are temporarily stored here. They are removed if the test passes.
 
 ### Diff
 
-`screenshots/diff` - If test is passed then it's removed
+`screenshots/diff` - Any differences between the base and actual images will stored here.
 
 ## Example of tests
 
@@ -61,6 +61,6 @@ describe("screenshot testing", [
 
 #### Future upgrades
 
-- [ ] - Composite it to a package
+- [ ] - Composite into a package
 
 - [ ] - Docker support
