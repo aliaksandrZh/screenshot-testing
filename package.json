@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "snap": "rm -rf ./screenshots/diff/* && node src/index"
+    "snap": "rm -rf ./screenshots/diff/* && node src/index",
+    "init": "node src/init-screenshots"
   },
   "keywords": [],
   "author": "",

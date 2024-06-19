@@ -2,6 +2,14 @@
 
 ### How to use
 
+## Reference images
+
+```
+node run init
+```
+
+## Test run
+
 ```
 npm run snap
 ```

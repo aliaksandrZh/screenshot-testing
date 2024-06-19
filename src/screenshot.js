@@ -5,6 +5,7 @@ const {
   captureFullPage,
   captureElement,
   interceptLocale,
+  captureFullPageMobile,
 } = require("./utils/screenshot.utils");
 
 async function makeScreenshot(url, options = {}) {
@@ -13,21 +14,31 @@ async function makeScreenshot(url, options = {}) {
     // devtools: true, // Open DevTools
   });
 
-  const page = await browser.newPage();
-
-  if (options.locale) {
-    await interceptLocale(page, options);
-  }
-
   try {
+    const page = await browser.newPage();
+
+    if (options.isMobile) {
+      await page.setViewport({ width: 375, height: 812, isMobile: true });
+    }
+
+    if (options.locale) {
+      await interceptLocale(page, options);
+    }
+
     await page.goto(url, { waitUntil: "networkidle0" });
+
     if (options.skipSelector) {
       await skipElement(page, options.skipSelector);
+    }
+
+    if (options.isMobile) {
+      return await captureFullPageMobile(page);
     }
 
     if (options.fullPage) {
       return await captureFullPage(page);
     }
+
     if (options.elementSelector) {
       return await captureElement(page, options.elementSelector);
     }
