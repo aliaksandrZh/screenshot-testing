@@ -20,14 +20,23 @@ const adjustSizeForImages = (img1, img2) => {
   return { width, height };
 };
 
+const getDiffPath = () => "screenshots/diff";
+const getActualFilePath = (filename) => `screenshots/actual/${filename}`;
+const getBaseFilePath = (filename) => `screenshots/base/${filename}`;
+
 const getDiffFilename = (base, actual) =>
-  `screenshots/diff/diff-${getFilenameWithoutExtension(
+  `${getDiffPath()}/diff-${getFilenameWithoutExtension(
     actual
   )}-${getFilenameWithoutExtension(base)}.png`;
+
 const deleteFileSync = (file) => fs.unlinkSync(file);
+
 module.exports = {
   getFilenameWithoutExtension,
   adjustSizeForImages,
   getDiffFilename,
   deleteFileSync,
+  getDiffPath,
+  getActualFilePath,
+  getBaseFilePath,
 };
